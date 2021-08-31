@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method = "testBean_init" default-destroy-method = "testBean_destroy">
+       
+       <!-- construcor -->
+       <bean id = "car1" class = "kr.hs.study.beans.Car" lazy-init = "true">
+       		<constructor-arg value= "3000" type = "int"></constructor-arg>
+       		<constructor-arg value = "sonata" type = "java.lang.String"></constructor-arg>
+       </bean>
+       
+       <bean id = "CarUser1" class = "kr.hs.study.beans.CarUser" lazy-init = "true">
+       		<constructor-arg value = "kim" type = "java.lang.String"></constructor-arg>
+       		<constructor-arg value = "red" type = "java.lang.String"></constructor-arg>
+       		<constructor-arg ref = "car1"></constructor-arg>
+       </bean>
+       
+       
+       <bean id = "car2" class = "kr.hs.study.beans.Car" lazy-init = "true">
+       		<property name="price" value = "5000"></property>
+       		<property name="name" value = "k9"></property>
+       </bean>
+       <bean id = "CarUser2" class = "kr.hs.study.beans.CarUser" lazy-init = "true">
+       		<property name="owner" value = "lee"></property>
+       		<property name="color" value = "blue"></property>
+       		<property name="car_type" ref = "car2"></property>
+       </bean>
+       
+       <bean id = "car3" class = "kr.hs.study.beans.Car" lazy-init = "true">
+       		<property name="price" value = "7000"></property>
+       		<property name="name" value = "avante"></property>
+       </bean>
+       <bean id = "CarUser3" class = "kr.hs.study.beans.CarUser">
+       		<property name="owner" value = "jimin"></property>
+       		<property name="color" value = "white"></property>
+       		<property name="car_type" ref = "car3"></property>
+       </bean>
+       
+       
+</beans>

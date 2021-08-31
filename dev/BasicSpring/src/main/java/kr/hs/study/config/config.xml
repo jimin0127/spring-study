@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- IOC container에서 객체 생성 -->
+<!-- <bean class="kr.hs.study.beans.TestBean" /> -->
+<!--  <bean id = "t2" class = "kr.hs.study.beans.TestBean"/>-->
+
+<!-- lazy-init = "true" : getBean할때 객체 생성함 -->
+<!-- scope="prototype" : 다른 객체를 생성함 singleton X -->
+<bean id = "t1" class = "kr.hs.study.beans.TestBean" lazy-init="true" scope="prototype"/>
+
+</beans>

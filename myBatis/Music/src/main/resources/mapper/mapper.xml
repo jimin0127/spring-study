@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="music">
+ <insert id="add" parameterType="kr.hs.study.model.dto.MusicDTO">
+ 	insert into music(id, song_title, song_singer, song_genre, song_price, song_passwd, song_date) values(SEQ.NEXTVAL, #{song_title},#{song_singer},#{song_genre},#{song_price}, #{song_passwd}, #{song_date})
+ </insert>
+<delete id="delete">
+ 	delete from music where id=#{id}
+ </delete>
+ <select id = "list" resultType="kr.hs.study.model.dto.MusicDTO">
+ 	select * from music
+ </select>
+  <select id = "selectOne" resultType="kr.hs.study.model.dto.MusicDTO">
+ 	select * from music where id=#{id}
+ </select>
+ <update id="update" parameterType="kr.hs.study.model.dto.MusicDTO">
+ 	 update music set song_title=#{song_title}, song_singer=#{song_singer}, song_genre=#{song_genre}, song_price=#{song_price}, song_date=#{song_date} where id=#{id}
+ </update>
+ <select id = "search" resultType="kr.hs.study.model.dto.MusicDTO">
+ 	select * from music where song_title LIKE '%'||#{title}||'%'
+ </select>
+</mapper>      

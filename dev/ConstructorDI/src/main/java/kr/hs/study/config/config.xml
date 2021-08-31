@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method = "testBean_init" default-destroy-method = "testBean_destroy">
+
+<bean id = "t1" class = "kr.hs.study.beans.TestBean1" />
+<bean id = "t2" class = "kr.hs.study.beans.TestBean1" lazy-init = "true">
+	<constructor-arg value = "10" type = "int"></constructor-arg> 
+	<!-- 우선 순위로 double이 실행된다. 따라서 type을 "int"로 지정-->
+</bean>
+<bean id = "t3" class = "kr.hs.study.beans.TestBean1" lazy-init = "true">
+	<constructor-arg value = "22.22" type = "double"></constructor-arg>
+</bean>
+<bean id = "t4" class = "kr.hs.study.beans.TestBean1" lazy-init = "true">
+	<constructor-arg value = "string4" type = "java.lang.String"></constructor-arg>
+</bean>
+<bean id = "t5" class = "kr.hs.study.beans.TestBean1" lazy-init = "true">
+	<constructor-arg value = "50" type="int"></constructor-arg>
+	<constructor-arg value = "55.55" type="double"></constructor-arg>
+	<constructor-arg value = "string5" type="java.lang.String"></constructor-arg>
+</bean>
+
+<!-- index를 지정해서 생성자에 넣음 생성자(int, double, string) -->
+<bean id = "t6" class = "kr.hs.study.beans.TestBean1" lazy-init = "true">
+	<constructor-arg value = "string6" index = "2"></constructor-arg>
+	<constructor-arg value = "66" index = "0"></constructor-arg>
+	<constructor-arg value = "66.66" index = "1"></constructor-arg>
+</bean>
+
+<!-- 객체 타입일때   -->
+<bean id = "t7" class = "kr.hs.study.beans.TestBean2" lazy-init = "true">
+	<constructor-arg>
+		<bean class = "kr.hs.study.beans.DataBean"/> <!-- 기본 생성자 호출 -->
+	</constructor-arg>
+	
+	<constructor-arg>
+		<bean class = "kr.hs.study.beans.DataBean"/>
+	</constructor-arg>
+</bean>
+
+<bean id = "d1" class = "kr.hs.study.beans.DataBean" lazy-init = "true">
+	<constructor-arg value = "10" type = "int"></constructor-arg>
+	<constructor-arg value = "20" type = "int"></constructor-arg>
+</bean>
+
+<bean id = "t8" class = "kr.hs.study.beans.TestBean2" lazy-init = "true">
+	<constructor-arg ref = "d1"></constructor-arg>
+	<constructor-arg ref = "d1"></constructor-arg>
+</bean>
+
+
+
+</beans>

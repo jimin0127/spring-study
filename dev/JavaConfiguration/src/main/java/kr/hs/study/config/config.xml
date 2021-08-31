@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-init-method = "testBean_init" default-destroy-method = "testBean_destroy">
+       
+       <!-- 설정파일을 자바 파일로 만들었으니까 자바 파일로 찾으라는 의미 / 자바 파일에 등록되어 있는 annotation(@Bean)을 찾아서 객체를 만들어라. -->
+       <context:annotation-config/>
+       <bean id = "obj1" class = "kr.hs.study.beans.TestBean2" lazy-init = "true"/>
+       <bean id = "obj6" class = "kr.hs.study.beans.TestBean2" lazy-init = "true" scope = "prototype"/>
+       <bean id = "obj7" class = "kr.hs.study.beans.TestBean3" lazy-init = "true" scope = "prototype">
+       		<constructor-arg value = "1" type = "int" index="0"></constructor-arg>
+       		<constructor-arg value = "String" type= "java.lang.String" index = "1"></constructor-arg>
+       		<constructor-arg ref ="d1" index = "2"></constructor-arg>
+       </bean>
+       <bean id = "d1" class = "kr.hs.study.beans.DataBean3"></bean>
+</beans>

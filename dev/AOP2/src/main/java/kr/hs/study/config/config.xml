@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                       http://www.springframework.org/schema/beans/spring-beans.xsd
+                       http://www.springframework.org/schema/context
+                       http://www.springframework.org/schema/context/spring-context.xsd
+                       http://www.springframework.org/schema/aop
+                       http://www.springframework.org/schema/aop/spring-aop.xsd">
+                       
+      <aop:config>
+      	<aop:aspect ref = "advice">
+      	<!-- 리턴타입(void, *) 패키지명(kr.hs.study..) 클래스명 (Bean*) 메서드이름(mehtod*()) -->
+      	<!-- <aop:pointcut expression="execution(* method3())" id="point"/>
+      	<aop:before method = "beforeMethod" pointcut-ref = "point"/>
+      	<aop:pointcut expression="execution(* method*())" id="point2"/>
+      	<aop:before method = "beforeMethod" pointcut-ref = "point2"/>
+      	<aop:after method = "afterMethod" pointcut-ref = "point2"/> -->
+      	<aop:pointcut  id="point3" expression="execution(int kr.hs.study.beans..*Bean1.method*())"/>
+      	<aop:before method = "beforeMethod" pointcut-ref = "point3"/>
+      	<!-- <aop:after method = "afterMethod" pointcut-ref = "point3"/> -->
+      	
+      	<!-- <aop:pointcut expression="execution(* method2())" id="point4"/>
+      	<aop:around method="aroundMethod" pointcut-ref="point4"/> -->
+      <!-- 	<aop:pointcut id="point5" expression="execution(* func1())"/>
+      	<aop:after-throwing method="afterThrowing" pointcut-ref="point5" throwing="e"/> exception 객체  -->
+      	<!-- <aop:pointcut expression="execution(* func3())" id="point6"/>
+      	<aop:after-returning method="afterReturning" pointcut-ref = "point6"/>
+      	<aop:pointcut expression="execution(* func4())" id="point7"/>
+      	<aop:around method="aroundMethod" pointcut-ref="point7"/> -->
+      	
+      	</aop:aspect>
+      </aop:config>
+      <bean id = "t1" class = "kr.hs.study.beans.TestBean1"></bean>
+      <bean id = "t2" class = "kr.hs.study.beans.TestBean2"></bean>
+      <bean id = "advice" class = "kr.hs.study.advisor.Advice"></bean>
+</beans>

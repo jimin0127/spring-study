@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="member">
+ <select id="list" resultType="kr.hs.study.model.dto.memberDTO">
+ 	select * from member order by name
+ </select>
+ <insert id="insert" parameterType="kr.hs.study.model.dto.memberDTO">
+ 	insert into member values (#{userid}, #{password}, #{name}, #{email}, to_char(sysdate, 'yy/mm/dd'))
+ </insert>
+ 
+ <select id="read" resultType="kr.hs.study.model.dto.memberDTO">
+ 	select * from member where userid=#{userid}
+ </select>
+ 
+<select id="check" resultType="int">
+	select count(*) from member where userid=#{userid} and password=#{password}
+</select>
+<update id="update" parameterType="kr.hs.study.model.dto.memberDTO">
+	update member set name=#{name}, email=#{email} where userid=#{userid}
+</update>
+ 
+</mapper>       

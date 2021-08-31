@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method = "testBean_init" default-destroy-method = "testBean_destroy">
+       <!-- default-init-method : 설정부분에 적어놓으면 모든 bean의 init-method에 적용
+       	모든 bean들이 자동으로 호출되는 메서드가 동일할 때 
+       	만약 testBean_init, destroy 메서드가 없다면 아무 일도 발생 안한다(에러발생 X) -->
+       	
+   
+<!-- init-method를 지정하면 생성자 호출후 자동으로 그 메서드가 실행된다. 
+	destroy-method를 지정하면 IOC container를 종료시킬 때 ctx=.close 전에 실행 -->
+<bean id = "t1" class = "kr.hs.study.beans.TestBean" init-method = "testBean_init"
+	destroy-method = "testBean_destroy"/>
+<!-- init-method와 destroy 메서드가 없으면 에러 발생  -->
+	
+
+
+</beans>
